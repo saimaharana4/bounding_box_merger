@@ -35,11 +35,33 @@ bounding_box_merger/
 
 ## Installation
 
-Ensure Python 3.x is installed. Install necessary Python libraries:
+1. **Clone the repository**
 
-```sh
-pip install -r requirements.txt
-```
+   ```sh
+   git clone https://github.com/saimaharana4/sentiment-analysis-webapp.git
+   cd sentiment-analysis-webapp
+   ```
+
+2. **Create and activate a virtual environment**
+
+   - For Windows:
+
+     ```sh
+     python -m venv venv
+     venv\Scripts\activate
+     ```
+
+   - For macOS/Linux:
+
+     ```sh
+     python3 -m venv venv
+     source venv/bin/activate
+
+3. **Ensure Python 3.x is installed. Install necessary Python libraries:**
+
+      ```sh
+      pip install -r requirements.txt
+      ```
 
 ## Usage
 
@@ -72,7 +94,7 @@ python src/visualization.py
 
 ### Evaluation
 
-1. **Run Evaluation Metrics**: Compute performance metrics against DBSCAN inital model with tuned model.
+1. **Run Evaluation Metrics**: Compute performance metrics against DBSCAN inial model with tuned model.
 
 ## Algorithms Used
 
