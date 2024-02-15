@@ -72,7 +72,7 @@ python src/visualization.py
 
 ### Evaluation
 
-1. **Run Evaluation Metrics**: Compute performance metrics against DBSCAN inisyal model with tuned model.
+1. **Run Evaluation Metrics**: Compute performance metrics against DBSCAN inital model with tuned model.
 
 ## Algorithms Used
 
