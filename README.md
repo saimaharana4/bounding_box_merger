@@ -1,66 +1,87 @@
----
-
-# Bounding Box Merger Project
+# Bounding Box Merging Project
 
 ## Overview
-The Bounding Box Merger Project aims to streamline the process of merging closely related bounding boxes in images of spreadsheets. Utilizing Optical Character Recognition (OCR) and data science algorithms, this project reads bounding box coordinates from images, identifies pairs of coordinates that are closely related, and merges them into a single bounding box.
+This project automates the process of identifying and merging closely related bounding boxes extracted from images of Excel sheets using Optical Character Recognition (OCR) and clustering algorithms. It streamlines data extraction from structured documents, enhancing data processing efficiency.
 
-## Getting Started
-
-### Prerequisites
-- Python 3.8+
-- Tesseract OCR
-- Libraries: pandas, OpenCV, pytesseract, scikit-learn
-
-### Installation
-1. **Install Tesseract OCR:**
-   - Windows: Download and install from [Tesseract GitHub](https://github.com/tesseract-ocr/tesseract).
-   - macOS/Linux: Use Homebrew or apt-get.
-     ```
-     brew install tesseract # macOS
-     sudo apt-get install tesseract-ocr # Ubuntu/Linux
-     ```
-2. **Install Python Libraries:**
-   ```
-   pip install pandas opencv-python pytesseract scikit-learn
-   ```
-
-### Directory Structure
+## Project Structure
 ```
-Bounding_Box_Merger_Project/
+bounding_box_merger/
 │
 ├── data/
-│   ├── raw/
-│   │   └── screening_data_csv.zip
-│   │
 │   ├── processed/
-│   │   ├── images/
-│   │   ├── bounding_boxes.csv
-│   │   └── merged_bounding_boxes.csv
+│   │   ├── csv/
+│   │   │   ├── list_a.csv                                      # Extracted bounding boxes from List A
+│   │   │   ├── list_b.csv                                      # Extracted bounding boxes from List B
+│   │   │   └── merged_boxes.csv                                # Merged bounding boxes
+│   │   └── images/
+│   │       ├── List_A/                                         # Images for List A
+│   │       └── List_B/                                         # Images for List B
+│   └── raw/
+│       └── screening_data_csv.zip                              # ZIP file containing original images
 │
 ├── notebooks/
-│   ├── 01_Data_Extraction_and_Preprocessing.ipynb
-│   └── 02_Bounding_Box_Merging.ipynb
+│        ├── 01_Data_Extraction_and_Preprocessing.ipynb         # Created the pipeline  to extract and preprocess the data
+│        └── 02_Bounding_Box_Merging.ipynb
+│                      # Data Science model implemented
+├── src/
+│   ├── data_extraction.py                                      # Script for OCR-based data extraction
+│   ├── clustering_and_merging.py                               # Script for clustering and merging bounding boxes
+│   └── visualization.py                                        # Script for visualizing bounding boxes
 │
-└── README.md
+├── Documentation.docx                                          # Project Objective and implementation method
+├── README.md                                                   # Project documentation
+└── requirements.txt                                            # Python dependencies
+```
+
+## Installation
+
+Ensure Python 3.x is installed. Install necessary Python libraries:
+
+```sh
+pip install -r requirements.txt
 ```
 
 ## Usage
 
-1. **Prepare Your Data:** Place the `screening_data_csv.zip` file containing images inside the `data/raw/` directory.
+### Data Extraction
 
-2. **Data Extraction and Preprocessing:**
-   - Navigate to the `notebooks/` directory.
-   - Open and run `01_Data_Extraction_and_Preprocessing.ipynb` to extract bounding box data from images and save it as `bounding_boxes.csv` in the `data/processed/` directory.
+1. **Prepare Your ZIP File**: Place the ZIP file containing images in the `data/raw` directory.
+2. **Run OCR Script**: Extract and save bounding box coordinates to CSV files.
 
-3. **Bounding Box Merging:**
-   - Continue in the `notebooks/` directory.
-   - Open and execute `02_Bounding_Box_Merging.ipynb` to read the `bounding_boxes.csv`, merge related bounding boxes, and save the merged coordinates to `merged_bounding_boxes.csv`.
+```sh
+python src/data_extraction.py
+```
 
-## Contributing
-We welcome contributions! Please feel free to fork this project, make your changes, and submit a pull request.
+### Clustering and Merging
 
-## License
-This project is open source and available under the [MIT License](LICENSE).
+1. **Adjust Paths**: Ensure CSV paths in `clustering_and_merging.py` point to your extracted data.
+2. **Run Clustering and Merging Script**: Process the extracted bounding boxes.
 
----
+```sh
+python src/clustering_and_merging.py
+```
+
+### Visualization
+
+1. **Set Image and CSV Paths**: In `visualization.py`, adjust `image_path` and `boxes_csv_path` to your files.
+2. **Visualize**: Overlay bounding boxes on images.
+
+```sh
+python src/visualization.py
+```
+
+### Evaluation
+
+1. **Run Evaluation Metrics**: Compute performance metrics against DBSCAN inisyal model with tuned model.
+
+## Algorithms Used
+
+- **OCR**: Tesseract OCR for text and bounding box extraction.
+- **Clustering**: DBSCAN for identifying groups of closely related bounding boxes.
+- **Standardization**: StandardScaler from scikit-learn for feature scaling.
+
+## Evaluation Metrics
+
+- **Calinski-Harabasz Index**: Ratio of between-clusters to within-cluster dispersion.
+- **Davies-Bouldin Index**: Average similarity of each cluster with its most similar cluster.
+
