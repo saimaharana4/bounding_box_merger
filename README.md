@@ -21,8 +21,8 @@ bounding_box_merger/
 │
 ├── notebooks/
 │        ├── 01_Data_Extraction_and_Preprocessing.ipynb         # Created the pipeline  to extract and preprocess the data
-│        └── 02_Bounding_Box_Merging.ipynb
-│                      # Data Science model implemented
+│        └── 02_Bounding_Box_Merging.ipynb                       # Data Science model implemented
+│                      
 ├── src/
 │   ├── data_extraction.py                                      # Script for OCR-based data extraction
 │   ├── clustering_and_merging.py                               # Script for clustering and merging bounding boxes
