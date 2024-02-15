@@ -38,8 +38,8 @@ bounding_box_merger/
 1. **Clone the repository**
 
    ```sh
-   git clone https://github.com/saimaharana4/sentiment-analysis-webapp.git
-   cd sentiment-analysis-webapp
+   git clone https://github.com/saimaharana4/bounding_box_merger.git
+   cd bounding_box_merger
    ```
 
 2. **Create and activate a virtual environment**
